@@ -1,0 +1,50 @@
+
+<div class="header">
+
+  <mat-form-field class="example-full-width">
+      <mat-label>Look up your favorite movie</mat-label>
+      <input id="searchInput"
+        #searchInput
+        class="body-sm search-input"
+        matInput
+        autocomplete="off"
+        type="search"
+        results="5"
+        [formControl]="searchControl"
+        placeholder="Search..."
+      />
+  </mat-form-field>
+
+  <button mat-button (click)="getUrl()" [cdkCopyToClipboard]="path">Copy to clipboard</button>
+        <div>
+          <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)" size = "large"
+                    color = "#934d4d" type = "ball-8bits">
+          </ngx-spinner>
+        </div>
+</div>
+
+<div *ngFor="let movie of movies" (click)="navigateToMovie(movie)">
+  <mat-card class="movie-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{'Title: ' + movie?.title}}</mat-card-title>
+    <mat-card-subtitle>{{'Movie ID: ' + movie?.id}}</mat-card-subtitle>
+  </mat-card-header>
+    <mat-card-content>
+     <div class="pull-left">{{'Genre Ids: ' + movie?.genre_ids}}</div><br>
+     <div class="pull-left">{{'Original Language: ' + movie?.original_language}}</div><br>
+     <div class="pull-left">{{'Title: ' + movie?.original_title}}</div><br>
+     <div class="pull-left"><b>Description: '</b>{{movie?.overview}}</div><br>
+     <div class="pull-left">{{'Popularity: ' + movie?.popularity}}</div><br>
+     <div class="pull-left">{{'IMG: ' + movie?.poster_path}}</div><br>
+     <div class="pull-left">{{'Release Date: ' + movie?.release_date}}</div><br>
+     <div class="pull-left">{{'Video: ' + movie?.video}}</div><br>
+     <div class="pull-left">{{'Vote Average: ' + movie?.vote_average}}</div><br>
+     <div class="pull-left">{{'Vote Count: ' + movie?.vote_count}}</div>
+       </mat-card-content>
+  </mat-card>
+  <br>
+
+
+
+</div>
